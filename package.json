@@ -2,7 +2,7 @@
 	"name": "portfolio",
 	"version": "0.0.0",
 	"description": "Min hemsida",
-	"main": "./dist/server.js",
+	"main": "./dist/server.bundle.js",
 	"scripts": {
 		"build:gui": "npx webpack-cli",
 		"build:server": "npx tsc && npx browserify ./build/server.js -o ./dist/server.bundle.js --node",

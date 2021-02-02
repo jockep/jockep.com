@@ -8,7 +8,9 @@ var express_1 = __importDefault(require("express"));
 var helmet_1 = __importDefault(require("helmet"));
 var PORT = 3000;
 var server = express_1.default();
-server.use(helmet_1.default());
+server.use(helmet_1.default({
+    contentSecurityPolicy: false,
+}));
 server.use('/', express_1.default.static('public'));
 server.use('*', express_1.default.static('public'));
 server.listen(PORT, function () {

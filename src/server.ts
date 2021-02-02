@@ -5,7 +5,9 @@ const PORT = 3000;
 
 const server = express();
 
-server.use(helmet());
+server.use(helmet({
+	contentSecurityPolicy: false,
+}));
 
 server.use('/', express.static('public'));
 server.use('*', express.static('public'));
