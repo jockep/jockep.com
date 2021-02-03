@@ -10,9 +10,7 @@ var helmet_1 = __importDefault(require("helmet"));
 var path_1 = __importDefault(require("path"));
 var PORT = 3000;
 var server = express_1.default();
-server.use(helmet_1.default({
-    contentSecurityPolicy: false,
-}));
+server.use(helmet_1.default());
 server.use('/', express_1.default.static(path_1.default.join(__dirname, '../../public')));
 server.use('*', express_1.default.static(path_1.default.join(__dirname, '../../public')));
 server.listen(PORT, function () {
