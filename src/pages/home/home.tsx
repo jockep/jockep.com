@@ -8,13 +8,13 @@ export function Home() {
 				<h1>Work in progress</h1>
 
 				<div id="socialicons">
-					<a href="https://www.facebook.com/joacim91/">
-						<FontAwesomeIcon style={{ color: 'blue' }} className='socialicon' icon={['fab', 'facebook-square']} />
+					<a href="https://www.facebook.com/joacim91/" target="_blank">
+						<FontAwesomeIcon style={{ color: '#1877F2' }} className='socialicon' icon={['fab', 'facebook-square']} />
 					</a>
-					<a href="https://twitter.com/jockefire">
+					<a href="https://twitter.com/jockefire" target="_blank">
 						<FontAwesomeIcon style={{ color: '#1DA1F2' }} className='socialicon' icon={['fab', 'twitter']} />
 					</a>
-					<a href="https://github.com/jockep">
+					<a href="https://github.com/jockep" target="_blank">
 						<FontAwesomeIcon style={{ color: '#333333' }} className='socialicon' icon={['fab', 'github']} />
 					</a>
 				</div>
