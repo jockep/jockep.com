@@ -47,7 +47,7 @@ jobs:
           name: dist
           
      - name: Prepare server
-       run: ssh jockep 'rm -rf /srv/jockep && mkdir -p /srv/jockep'
+       run: ssh jockep 'rm -rf /srv/jockep && mkdir -p /srv/jockep && chmod -R 700 /srv/jockep'
         
      - name: Upload files
        run: scp dist.tar jockep:/srv/jockep
