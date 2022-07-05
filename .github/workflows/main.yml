@@ -16,9 +16,26 @@ jobs:
       - run: npm run build
       
       
-#   deploy:
-#     runs-on: ubuntu-latest
-#     needs: [build]
-#     steps:
-#       uses: appleboy/scp-action@v0.0.1
-#     - run: scp 
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+     - name: Configure SSH
+       run: | 
+        mkdir -p ~/.ssh/
+        echo "$SSH_KEY" > ~/.ssh/jockep.key
+        chmod 600 ~/ssh/jockep.key
+        cat >>~/.ssh/config << END
+        Host jockep
+          HostName $SSH_HOST
+          User jockep_svc
+          IdentityFile ~/.ssh/jockep.key
+          StictHostKeyChecking no
+        END
+       env:
+        SSH_HOST: ${{ secrets.SSH_HOST }}
+        SSH_KEY: ${{ secrets.SSH_KEY }}
+        
+     - name: Upload files
+       run: ssh jockep "echo Test"
+      
