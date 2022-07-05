@@ -30,7 +30,7 @@ jobs:
           HostName $SSH_HOST
           User jockep_svc
           IdentityFile ~/.ssh/jockep.key
-          StictHostKeyChecking no
+          StrictHostKeyChecking no
         END
        env:
         SSH_HOST: ${{ secrets.SSH_HOST }}
