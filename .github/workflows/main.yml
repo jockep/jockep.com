@@ -51,4 +51,7 @@ jobs:
         
      - name: Upload files
        run: scp dist.tar jockep:/srv/jockep
+       
+     - name: Extract new files
+       run: ssh jockep 'cd /srv/jockep && tar -xvf dist.tar && rm -rf dist.tar'
       
