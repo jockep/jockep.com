@@ -34,7 +34,7 @@ jobs:
         END
        env:
         SSH_HOST: ${{ secrets.SSH_HOST }}
-        SSH_KEY: ${{ secrets.SSH_KEY }}
+        SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         
      - name: Upload files
        run: ssh jockep "echo Test"
