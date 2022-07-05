@@ -56,5 +56,5 @@ jobs:
        run: ssh jockep 'cd /srv/jockep && tar -xvf dist.tar && rm -rf dist.tar'
        
      - name: Restart service
-       run: ssh jockep 'systemctl restart jockep'
+       run: ssh jockep 'sudo systemctl restart jockep'
       
