@@ -14,11 +14,11 @@ jobs:
           node-version: '16.x'
       - run: npm install
       - run: npm run build
-      - run: ls
-#      - uses: actions/upload-artifact@v2
-#        with:
+      - run: ls -la
+#       - uses: actions/upload-artifact@v2
+#         with:
 #          name: dist
-#          path: /
+#          path: .*/
       
       
   deploy:
