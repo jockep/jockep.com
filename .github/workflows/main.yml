@@ -14,6 +14,10 @@ jobs:
           node-version: '16.x'
       - run: npm install
       - run: npm run build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: /
       
       
   deploy:
@@ -36,6 +40,10 @@ jobs:
         SSH_HOST: ${{ secrets.SSH_HOST }}
         SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         
+     - uses: actions/download-artifact@v2
+       with:
+          name: dist
+        
      - name: Upload files
-       run: ssh jockep "echo Test"
+       run: ls
       
