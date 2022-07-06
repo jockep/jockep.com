@@ -1,6 +1,6 @@
 name: Main
 
-on: 
+on:
   push:
     branches: [ master ]
 
@@ -20,14 +20,14 @@ jobs:
         with:
            name: dist
            path: dist.tar
-      
-      
+
+
   deploy:
     runs-on: ubuntu-latest
     needs: [build]
     steps:
      - name: Configure SSH
-       run: | 
+       run: |
         mkdir -p ~/.ssh/
         echo "$SSH_KEY" > ~/.ssh/jockep.key
         chmod 600 ~/.ssh/jockep.key
@@ -41,20 +41,16 @@ jobs:
        env:
         SSH_HOST: ${{ secrets.SSH_HOST }}
         SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        
+
      - uses: actions/download-artifact@v2
        with:
           name: dist
-          
+
      - name: Prepare server
        run: ssh jockep 'rm -rf /srv/jockep && mkdir -p /srv/jockep && chmod -R 700 /srv/jockep'
-        
+
      - name: Upload files
        run: scp dist.tar jockep:/srv/jockep
-       
+
      - name: Extract new files
        run: ssh jockep 'cd /srv/jockep && tar -xvf dist.tar && rm -rf dist.tar'
-       
-     - name: Restart service
-       run: ssh jockep 'sudo systemctl restart jockep'
-      
