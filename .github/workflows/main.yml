@@ -55,7 +55,6 @@ jobs:
      - name: Extract new files
        run: ssh jockep 'cd /srv/jockep && tar -xvf dist.tar && rm -rf dist.tar'
        
-     - name: Delete artifacts
      - uses: geekyeggo/delete-artifact@v1
        with:
         name: dist
