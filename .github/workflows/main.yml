@@ -34,13 +34,14 @@ jobs:
         cat >>~/.ssh/config << END
         Host jockep
           HostName $SSH_HOST
-          User jockep_svc
+          User $USER
           IdentityFile ~/.ssh/jockep.key
           StrictHostKeyChecking no
         END
        env:
         SSH_HOST: ${{ secrets.SSH_HOST }}
         SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        USER: ${{ secrets.USER_ACCOUNT }}
 
      - uses: actions/download-artifact@v2
        with:
