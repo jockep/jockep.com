@@ -27,7 +27,7 @@ export default function Home() {
     const [correctAnswer, setCorrectAnswer] = useState<boolean>(false);
 
     async function getChampions() {
-        const championsRequest = await fetch('http://ddragon.leagueoflegends.com/cdn/12.23.1/data/en_GB/champion.json');
+        const championsRequest = await fetch('https://ddragon.leagueoflegends.com/cdn/12.23.1/data/en_GB/champion.json');
         const champions = await championsRequest.json();
         const championArray: List = [];
         for (const key in champions.data) {
@@ -48,7 +48,7 @@ export default function Home() {
     }
 
     async function getRandomSkin() {
-        const championRequest = await fetch(`http://ddragon.leagueoflegends.com/cdn/12.23.1/data/en_GB/champion/${champion?.id}.json`);
+        const championRequest = await fetch(`https://ddragon.leagueoflegends.com/cdn/12.23.1/data/en_GB/champion/${champion?.id}.json`);
         const skins = (await championRequest.json()).data[champion?.id!].skins;
 
         const s: List = [];
@@ -107,7 +107,7 @@ export default function Home() {
                 champion !== undefined && skin !== undefined && (
                     <div style={
                         {
-                            background: `url(http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_${skin.id}.jpg) center center`,
+                            background: `url(https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_${skin.id}.jpg) center center`,
                             width: `${150 + (tries * 25)}px`,
                             height: `${150 + (tries * 25)}px`
                         }
